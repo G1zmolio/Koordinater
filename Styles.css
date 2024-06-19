@@ -1,0 +1,148 @@
+.bordered-text {
+    border: 1px solid black; /* Adjust the border style as needed */
+    padding: 10px; /* Optional padding for better visual appearance */
+}
+
+
+/* Style the nested tabs container */
+  .nested-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-top: 10px; /* Adjust as needed */
+  }
+
+  /* Style the buttons inside the nested tabs */
+  .nested-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    transition: 0.3s;
+    font-size: 15px;
+  }
+
+ 
+  /* Create an active/current tablink class for nested tabs */
+  .nested-tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the nested tab content */
+  .nested-tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: none;
+    border-top: none;
+  }
+
+  .nested-tabcontent button {
+    background-color: #ce0303;
+    color: #fff;
+    border: 2px solid #ce0303;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+.bold {
+    font-weight: bold;
+}
+
+   .Koordinatbutton {
+    background-color: #ce0303;
+    color: #fff;
+    border: 2px solid #ce0303;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+        .input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .input-container label {
+        margin-right: 10px;
+      }
+
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+
+}
+
+.input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .input-container label {
+        margin-right: 10px;
+      }
+
+.Koordinatbutton {
+    background-color: #ce0303;
+    color: #fff;
+    border: 2px solid #ce0303;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+
+  #map {
+            height: 400px;
+            width: 700px;
+        
+        }
+
