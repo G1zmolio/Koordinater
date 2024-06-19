@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<script src="script.js"></script> 
+<head>
+<link href="Styles.css" rel="stylesheet">
+<link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet">
+<link href="toggle-radios.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<!-- Tabs -->
+	<div class="tab">
+	  <button class="tablinks" onclick="tabs(event, '70prosent')">1</button>
+	  <button class="tablinks" onclick="tabs(event, 'Koordinater');initMap()">Kart</button>
+	  <button class="tablinks" onclick="tabs(event, 'Utvendigrørbrudd')">3</button>
+	  <button class="tablinks" onclick="tabs(event, 'Direkteoppgjør')">4</button>
+	  <button class="tablinks" onclick="tabs(event, 'Frost')">5</button>
+	  <button class="tablinks" onclick="tabs(event, 'DropdownTab')">6</button>
+    <button class="tablinks" onclick="tabs(event, 'Dekningavslag')">7</button>
+
+	</div>
+
+<!-- 70% -->
+  <div id="70prosent" class="tabcontent">
+    <h3>1</h3>
+    </div>
+
+<!-- Kart / koordinater html -->
+
+    <div id="Koordinater" class="tabcontent">
+    
+    <p>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+
+  
+        <label for="address"><b>Adresse:</b></label>
+    <input type="text" id="address" placeholder="Tast inn adresse">
+    <button onclick="geocodeAddress()">Finn</button>
+
+    <p id="result">
+          <b>Breddegrad:</b>&nbsp;<span id="latitude"></span>
+          <button onclick="copyToClipboard('latitude')">Kopier</button>
+          <br>
+          <b>Lengdegrad:</b>&nbsp;<span id="longitude"></span>
+          <button onclick="copyToClipboard('longitude')">Kopier</button>
+      </p>
+
+    <div id="map"></div>
+ 
+    </div>
+
+<!-- Kart script -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        var map;
+        var marker;
+
+        function initMap() {
+            map = L.map('map').setView([0, 0], 2);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            marker = L.marker([0, 0]).addTo(map);
+        }
+
+        function geocodeAddress() {
+            var address = document.getElementById('address').value;
+            fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var location = [parseFloat(data[0].lat).toFixed(5), parseFloat(data[0].lon).toFixed(5)];
+                        document.getElementById('latitude').innerText = location[0];
+                        document.getElementById('longitude').innerText = location[1];
+
+                        map.setView(location, 15);
+                        marker.setLatLng(location);
+                    } else {
+                        alert('Location not found');
+                    }
+                })
+                .catch(error => {
+                    console.error('Geocoding error:', error);
+                });
+
+        }
+
+  // Add event listener for the "Enter" key press
+      document.getElementById("address").addEventListener("keyup", function (event) {
+          if (event.key === "Enter") {
+              geocodeAddress();
+          }
+      });
+
+       function copyToClipboard(elementId) {
+          var element = document.getElementById(elementId);
+          var text = element.textContent || element.innerText;
+          
+          navigator.clipboard.writeText(text)
+              .then(function () {
+             
+              })
+              .catch(function (err) {
+                  console.error('Kunne ikke kopiere til utklippstavlen: ', err);
+              });
+      }
+    </script>
+
+<!-- Utvendig rør tab -->
+
+	<div id="Utvendigrørbrudd" class="tabcontent">
+  <h3>3</h3>
+
+  
+<!-- Direkteoppgjør tab -->
+
+	<div id="Direkteoppgjør" class="tabcontent">
+		<h3>4</h3>
+
+
+</div>
+
+<!-- Frost tab/tab 4 -->
+
+	<div id="Frost" class="tabcontent">
+	</div>
+
+<!-- Tekstmaler -->
+
+	<div id="DropdownTab" class="tabcontent">
+
+	
+	
+
+
+<div id="Dekningavslag" class="tabcontent">
+ <h3>5</h3>
+
+
+
+</div>
+
+
+</div>
+
+</body>
+</html> 
